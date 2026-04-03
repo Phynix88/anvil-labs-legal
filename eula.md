@@ -10,7 +10,7 @@ By installing or using Time-to-Invoice for Jira ("the App"), you agree to this E
 
 ## 2. License Grant
 
-We grant you a non-exclusive, non-transferable, revocable license to use the App on Atlassian Jira Cloud in accordance with Atlassian's Marketplace Terms of Use and this Agreement.
+We grant you a non-exclusive, non-transferable, revocable license to use the App on Atlassian Jira Cloud in accordance with the [Atlassian Marketplace Terms of Use](https://www.atlassian.com/licensing/marketplace/termsofuse), the [Intuit Developer Terms of Service](https://developer.intuit.com/app/developer/qbo/docs/legal-agreements/intuit-terms-of-service-for-intuit-developer-services), and this Agreement.
 
 ## 3. Permitted Use
 
@@ -51,9 +51,12 @@ THE APP IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED. 
 
 TO THE MAXIMUM EXTENT PERMITTED BY LAW, ANVIL LABS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE APP. OUR TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT YOU PAID FOR THE APP IN THE 12 MONTHS PRECEDING THE CLAIM.
 
-## 11. Termination
+## 11. Termination & Deauthorization
 
-We may terminate this license if you violate this Agreement. You may terminate by uninstalling the App. Upon termination, your right to use the App ceases immediately.
+We may terminate this license if you violate this Agreement. You may terminate by uninstalling the App from your Jira site. Upon termination:
+- Your right to use the App ceases immediately
+- All stored data (settings, invoice records, OAuth tokens) will be deleted by Atlassian's Forge platform
+- You may also revoke QuickBooks access from [accounts.intuit.com](https://accounts.intuit.com)
 
 ## 12. Changes
 

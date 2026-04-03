@@ -28,7 +28,7 @@ The App also stores configuration data you provide:
 - Project-level billing configuration (rates, customer mappings)
 - Invoice records created by the App (for audit trail purposes)
 
-The App does **not** collect passwords, email addresses, IP addresses, or any data beyond what is listed above.
+The App does **not** collect passwords, email addresses, IP addresses, browsing behavior, or any data beyond what is listed above. We do **not** sell, rent, or share your data with any third party.
 
 ---
 
@@ -50,9 +50,10 @@ We do **not** use your data for analytics, advertising, profiling, or any purpos
 The App runs entirely on the **Atlassian Forge platform**, which means all compute and storage is hosted and managed by Atlassian. The App uses:
 
 - **Forge KVS (Key-Value Store)** — for settings, project configurations, and invoice records. Data is scoped to your Atlassian site and inaccessible to other tenants.
-- **Forge Secrets** — for storing QuickBooks OAuth tokens. Tokens are stored encrypted and are never exposed in logs or to the App's frontend.
+- **Forge Secrets** — for storing QuickBooks OAuth tokens. Tokens are stored encrypted using Atlassian's secret storage mechanism (`kvs.setSecret`) and are never exposed in logs, error messages, or to the App's frontend.
+- **Forge Environment Variables** — the QuickBooks Client Secret is stored as an encrypted environment variable, not in application code.
 
-No data is stored on Anvil Labs servers. Atlassian's infrastructure security, including encryption at rest and in transit, applies to all stored data. Atlassian's own privacy and security practices are documented at [atlassian.com/trust](https://www.atlassian.com/trust).
+No data is stored on Anvil Labs servers. We do not operate any backend infrastructure. Atlassian's infrastructure security, including encryption at rest and in transit, applies to all stored data. Atlassian's own privacy and security practices are documented at [atlassian.com/trust](https://www.atlassian.com/trust).
 
 ---
 
@@ -71,15 +72,25 @@ No data is sent to any other third party. No analytics services, crash reporters
 
 - **Settings and project configurations** persist in Forge KVS until an administrator explicitly deletes them or uninstalls the App.
 - **Invoice records** are retained indefinitely as an audit trail. Administrators can delete individual records through the App's interface.
-- **QuickBooks OAuth tokens** are retained until you disconnect your QuickBooks account or uninstall the App, at which point they are deleted.
+- **QuickBooks OAuth tokens** are retained until you disconnect your QuickBooks account or uninstall the App, at which point they are immediately and permanently deleted from Forge Secrets.
 
-When the App is uninstalled from a Jira site, Atlassian's Forge platform garbage-collects all associated KVS data according to their data retention policies.
+### Disconnecting QuickBooks
+
+You can disconnect your QuickBooks account at any time from the QuickBooks tab within the App. When you disconnect:
+- All OAuth tokens (access and refresh) are immediately deleted
+- No further API calls are made to QuickBooks on your behalf
+- Your settings, project configurations, and invoice records are retained unless you choose to delete them
+- You can also revoke access from within QuickBooks by visiting **My Apps** at [accounts.intuit.com](https://accounts.intuit.com)
+
+### Uninstallation
+
+When the App is uninstalled from a Jira site, Atlassian's Forge platform deletes all associated KVS data (settings, invoice records, and tokens) according to their data retention policies.
 
 ---
 
-## 7. Your Rights (GDPR)
+## 7. Your Rights (GDPR & Swiss DSG)
 
-If you are located in the European Union or European Economic Area, you have the following rights under the General Data Protection Regulation (GDPR):
+If you are located in the European Union, European Economic Area, or Switzerland, you have the following rights under the General Data Protection Regulation (GDPR) and the Swiss Federal Act on Data Protection (DSG):
 
 - **Access** — You may request a summary of what data the App holds about your site.
 - **Correction** — You may update or correct configuration data directly within the App.
